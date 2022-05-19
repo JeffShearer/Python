@@ -15,3 +15,4 @@ for value in [9,10,2141,215,3021] :
     print('running count:', count)
 print('grand total:', sum)
 print ('average:', sum / count)
+

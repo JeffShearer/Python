@@ -1,0 +1,11 @@
+Subject: Here's a subject line!
+Date: 2022-05-19
+Body: here's the text from that email
+
+Subject: Here's a subject line again
+Date: 2022-05-01
+Body: here's the text from that email
+
+Subject: Another subject
+Date: 2022-04-20
+Body: here's the text from that email
