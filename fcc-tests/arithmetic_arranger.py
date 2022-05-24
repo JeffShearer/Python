@@ -32,14 +32,12 @@ def arithmetic_arranger(problems,solve):
         if solve is True:
             topnums = int(numerators)
             bottomnums = int(denominators)
-            answers =  None
-            if operators is '+':
+            if operators == '+':
                 answers = topnums + bottomnums
             else: 
                 answers = topnums - bottomnums
         else:
             answers = ""
-        print(answers)
         #length - determine the max length of each problem
         length = max(len(numerators),len(denominators)) + 2
 
