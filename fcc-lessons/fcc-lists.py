@@ -57,7 +57,7 @@ for line in fhand :
 
 # or even more complex - just get the month of the date!
 
-fhand = open('sample.txt')
+fhand = open('fcc-lessons\sample.txt')
 for line in fhand :
     line = line.rstrip()
     if not line.startswith('Date') :
