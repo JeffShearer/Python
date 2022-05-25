@@ -28,7 +28,7 @@ def add_time(start,duration,day=""):
     add_hours = int(add_hours)
     add_mins = int(add_mins)
 
-    #Normalize day & look up code
+    #Normalize day & look up numeric code for day of week
     if day != "":
         start_day = day.capitalize()
         day_code = day_name.index(start_day)
@@ -48,6 +48,7 @@ def add_time(start,duration,day=""):
     if new_mins >= 60:
         new_mins -= 60
         new_hours += 1
+    
     #fix notation on minutes to ensure it always has two digits
     if new_mins < 10:
         new_mins = "0" + str(new_mins)
@@ -55,7 +56,7 @@ def add_time(start,duration,day=""):
     # add hours, incrementing days if >= 24
     new_hours = start_hours + new_hours + add_hours
     if new_hours >= 24:
-        # note - have to convert to int to get rid of decimals - round() may round up, so can't use here.
+        # note - have to convert to int to get rid of decimals without risk of rounding up
         add_days += int((new_hours/24))
         if day != "":
             day_code += add_days
@@ -64,7 +65,7 @@ def add_time(start,duration,day=""):
             print(day_code)
         new_hours = new_hours - (add_days*24)
 
-    #Converts back to 12 hour clock - note clauses for handling both 12oclock times properly.
+    #Converts hours back to 12 hour clock - note clauses for handling 12:00 hours properly.
     if new_hours == 12:
         new_am_pm = "PM"
     elif new_hours > 12:
@@ -92,7 +93,7 @@ def add_time(start,duration,day=""):
     if day !="":
         new_day = day_name[day_code]
 
-
+    # form new_time statement depending if day was supplied or not. 
     if day != "":
         new_time = (str(new_hours) + ":" + str(new_mins) + " " + str(new_am_pm) + ", " + str(new_day) + str(add_days) + str(day_statement)  )
     else:    
@@ -101,6 +102,6 @@ def add_time(start,duration,day=""):
 
     return new_time
 
-
+#test function call
 print(add_time("11:59 PM", "400:00","friday"))
 
