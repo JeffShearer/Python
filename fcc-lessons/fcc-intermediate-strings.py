@@ -47,7 +47,7 @@ print(greet)
 
 data = 'from me@emailaddress.com Sat Jan 5 09:15:16 2022'
 dotcom_pos = data.find('.com')
-print(dotcom_pos)
+print(data[dotcom_pos:dotcom_pos+3])
 sppos = data.find(' ', dotcom_pos)
 print(sppos)
 email = data[:sppos]
