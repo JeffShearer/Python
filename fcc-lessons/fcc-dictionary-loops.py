@@ -1,7 +1,7 @@
 # count words in an external file name, find the most commmon word and read out the word, and the count
 # this is the first real application built so far. lot to unpack so I've commented inline to remind myself how all this works.
 
-handle = open('words.txt')
+handle = open('fcc-lessons\words.txt')
 
 # initialize an empty dictionary
 counts = dict()
@@ -12,6 +12,7 @@ for line in handle:
     for word in words:
         counts[word] = counts.get(word,0) +1
 
+print(counts)
 # initialize two new variables for the highest frequency word, and it's cooresponding count
 bigcount = None
 bigword = None
