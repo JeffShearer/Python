@@ -5,6 +5,7 @@ class Category:
     ledger = []
     name = ""
     total = float()
+    registry = []
 
     # initialize new budget category objects -
     # note you need to define as variables anything you plan to reference in other methods!
@@ -12,7 +13,8 @@ class Category:
         self.name = name
         self.ledger = []
         self.total = float()
-
+        self.registry.append(self)
+    
     # Method for deposit w/ two arguments - amount & descripption - append to a ledger (dictionary)
     def deposit(self, amount, description=""):
         self.ledger.append({'amount': amount,'description': description})
@@ -57,28 +59,49 @@ class Category:
             return True
         else:
             return False
+    
+   # def __str__(self):
+       # title = f"{self.name:*^30}\n"
+        #items = ""
+        #total = 0
+        #for i in range(len(self.ledger)):
+            #items += f"{self.ledger[i]['description'][0:23]:23}" + f"{self.ledger[i]['amount']:>7.2f}" + '\n'
+            #total += self.ledger[i]['amount']
+
+        #output = title + items + "Total: " + str(total)
+        #return output
+
+    #Built in method for determining what happens with the object itself is printed
+    def __str__(self):
+        #variable to create 30 char string with name & asterisks
+        title = self.name.center(30,'*')
+        body = ""
+        #total calls the get_balance method and rounds to two decimal places
+        total = "Total: " + str(round(self.get_balance(),2))
+        # For loop that iterates through the range of self.ledger, grabbing the first 23 chars of description and first 7 of amount   
+        for item in range(len(self.ledger)):
+            body += self.ledger[item]['description'][0:23]+ str(self.ledger[item]['amount'])[0:7].rjust(30-len(self.ledger[item]['description'][0:23])) + '\n'
+        return title + '\n' + body + total
 
 
 
 def create_spend_chart(categories):
-    return
+    output = ""
+    for name in range(len(Category.registry)):
+        output += str(Category.self.name) + '\n'
+    return output
+
 
 food = Category("Food")
 clothing = Category("Clothing")
-food.deposit(1000, "initial deposit")
+food.deposit(10000, "initial deposit")
 food.withdraw(10)
 food.withdraw(10.15, "groceries")
 food.withdraw(15.89, "restaurant and more food for dessert")
 food.transfer(500, clothing)
-print(food.ledger)
-print(clothing.ledger)
-print(clothing.get_balance())
 clothing.withdraw(25.55)
 clothing.withdraw(100)
 auto = Category("Auto")
 auto.deposit(1000, "initial deposit")
 auto.withdraw(15)
-
-print(food)
-print(clothing)
-
+print(create_spend_chart([food, clothing, auto]))
