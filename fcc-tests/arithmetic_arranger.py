@@ -12,7 +12,6 @@ def arithmetic_arranger(problems,solve):
         problem = problem.split()
         # separate out elements of each formula
         numerators = problem[0]
-        print(numerators)
         denominators = problem[2]
         operators =  problem[1]
 
